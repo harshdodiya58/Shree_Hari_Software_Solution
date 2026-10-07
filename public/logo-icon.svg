@@ -1,0 +1,24 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shss-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A73E8" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#0B57D0" />
+    </linearGradient>
+    <linearGradient id="shss-sheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="shss-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#shss-grad)" />
+  <rect x="2" y="2" width="44" height="22" rx="12" fill="url(#shss-sheen)" />
+  <rect x="2" y="2" width="44" height="44" rx="12" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1.5" fill="none" />
+  <path d="M 18 15 C 14 15 12 18 12 21 C 12 25 18 25 21 27 C 24 29 24 33 20 33 C 16 33 14 30.5 13 29" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 28 15 L 28 33" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" />
+  <path d="M 21 24 L 35 24" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" />
+  <circle cx="35" cy="15" r="3.5" fill="url(#shss-accent)" stroke="#FFFFFF" stroke-width="1.2" />
+</svg>

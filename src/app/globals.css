@@ -1,26 +1,396 @@
+/* ============================================================
+   globals.css — Design System Tokens & Base Styles
+   Shree Hari Software Solution · Premium Light Edition v1.0
+   ============================================================ */
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Tailwind v4 Theme Tokens ─────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Color Tokens (Section 4.1) */
+  --color-bg: #FFFFFF;
+  --color-bg-soft: #F7F9FC;
+  --color-bg-tint: #EEF4FE;
+  --color-surface: #FFFFFF;
+  --color-border: #E6EAF0;
+  --color-border-strong: #D5DBE5;
+  --color-ink: #202124;
+  --color-ink-2: #4A4F57;
+  --color-ink-3: #6B7280;
+  --color-primary: #1A73E8;
+  --color-primary-hover: #1765CC;
+  --color-primary-soft: #E8F0FE;
+  --color-accent: #34A853;
+  --color-accent-soft: #E6F4EA;
+  --color-warn-soft: #FEF7E0;
+  --color-danger-soft: #FCE8E6;
+  --color-danger: #D93025;
+
+  /* Typography (Section 4.2) */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* Font Sizes */
+  --text-display: 3rem;      /* 48px */
+  --text-h1: 2.375rem;       /* 38px */
+  --text-h2: 1.875rem;       /* 30px */
+  --text-h3: 1.375rem;       /* 22px */
+  --text-body: 1.0625rem;    /* 17px */
+  --text-small: 0.875rem;    /* 14px */
+  --text-label: 0.75rem;     /* 12px */
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows (Section 4.3) */
+  --shadow-rest: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+
+  /* Easing (Section 10) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base Styles ──────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Typography ───────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-ink);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.text-display {
+  font-size: var(--text-display);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.text-h1 {
+  font-size: var(--text-h1);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+.text-h3 {
+  font-size: var(--text-h3);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: 1.65;
+  max-width: 65ch;
+}
+
+.text-small {
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.text-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* ─── Section Label (Signature Pattern #1) ────────────────── */
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label::before {
+  content: '(';
+  color: var(--color-border-strong);
+}
+
+.section-label::after {
+  content: ')';
+  color: var(--color-border-strong);
+}
+
+/* ─── Container ────────────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* If a container is nested inside another container, remove duplicate padding */
+.container .container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 100% !important;
+}
+
+/* ─── Max-width safety utilities ───────────────────────────── */
+.max-w-xs { max-width: 20rem; }
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-lg { max-width: 32rem; }
+.max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-3xl { max-width: 48rem; }
+.max-w-4xl { max-width: 56rem; }
+.max-w-5xl { max-width: 64rem; }
+.max-w-6xl { max-width: 72rem; }
+.max-w-7xl { max-width: 80rem; }
+
+/* ─── Section spacing ──────────────────────────────────────── */
+
+.section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.section-lg {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 1024px) {
+  .section-lg {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+}
+
+/* ─── Hairline Divider ─────────────────────────────────────── */
+
+.hairline {
+  border: none;
+  height: 1px;
+  background-color: var(--color-border);
+  width: 100%;
+}
+
+/* ─── Focus Ring (Section 14) ──────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ─── Skip Link ────────────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.15s;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ─── Scrollbar Styling ────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-soft);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-3);
+}
+
+/* ─── Selection ────────────────────────────────────────────── */
+
+::selection {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* ─── Reduced Motion ───────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Mobile Breakpoints ───────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .text-display {
+    font-size: 2.125rem; /* 34px */
+    letter-spacing: -0.025em;
+  }
+  
+  .text-h1 {
+    font-size: 1.875rem; /* 30px */
+  }
+  
+  .text-h2 {
+    font-size: 1.75rem; /* 28px */
+  }
+  
+  .text-h3 {
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  .text-body {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* ─── Marquee ──────────────────────────────────────────────── */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ─── Status Pulse ─────────────────────────────────────────── */
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+  }
+}
+
+/* ─── Scroll Progress ──────────────────────────────────────── */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-primary);
+  z-index: 9999;
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* ─── Demo Data Badge ──────────────────────────────────────── */
+
+.demo-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-block;
 }
